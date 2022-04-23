@@ -1,20 +1,20 @@
 package com.amigoscode.student;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class StudentService {
+
+    private final StudentRepository studentRepository;
+
     public List<Student> getStudents() {
-        return List.of(new Student(
-                        1L,
-                        "Jan",
-                        "jan.kowalski@gmail.com",
-                        LocalDate.of(1999, 12, 01),
-                        21
-                )
-        );
+        return studentRepository.findAll();
     }
 }
+
+//List.of(
